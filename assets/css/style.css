@@ -1,1 +1,94 @@
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #0b4f2f;
+}
+
+main {
+    padding: 20px;
+}
+
+.content {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: #0057B7;
+    color: white;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    height: 40px;
+    margin-right: 12px;
+}
+
+.nav-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.donate-btn {
+    background: #FFD700;
+    padding: 6px 14px;
+    border-radius: 4px;
+    color: #003300;
+}
+
+.donate-btn:hover {
+    background: #e6c200;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: #f5faff;
+}
+
+/* BUTTONS */
+.btn-primary {
+    background: #0057B7;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: #004a9a;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #0b4f2f;
+    color: white;
+    margin-top: 40px;
+}
 
