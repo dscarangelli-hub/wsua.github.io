@@ -95,7 +95,7 @@ ul {
 }
 
 /* --------------------------------------------------
-   HERO SECTION WITH IMAGE BACKGROUND
+   HERO SECTION
 -------------------------------------------------- */
 
 .hero {
@@ -110,7 +110,6 @@ ul {
     border-bottom: 4px solid #FFD700;
 }
 
-/* Wrapper behind text for readability */
 .hero-text-wrapper {
     display: inline-block;
     padding: 20px 30px;
@@ -118,7 +117,6 @@ ul {
     border-radius: 10px;
 }
 
-/* Ukrainian yellow title */
 .hero-title {
     font-size: 2.8rem;
     font-weight: 700;
@@ -129,7 +127,6 @@ ul {
         0 0 12px rgba(0,0,0,0.5);
 }
 
-/* Ukrainian blue subtitle */
 .hero-subtitle {
     color: #0057B7;
     font-size: 1.2rem;
@@ -177,7 +174,6 @@ ul {
     overflow: hidden;
 }
 
-/* Dark overlay */
 .card::before {
     content: "";
     position: absolute;
@@ -199,7 +195,7 @@ ul {
 }
 
 /* --------------------------------------------------
-   CTA SECTION WITH IMAGE BACKGROUND
+   CTA SECTION WITH PARALLAX
 -------------------------------------------------- */
 
 .cta {
@@ -209,11 +205,16 @@ ul {
     margin-top: 60px;
 
     background:
-        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
         url('../images/cta-rally.jpg');
-    background-size: cover;
-    background-position: center;
+
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: center top;
+
+    background-attachment: fixed;
+
+    min-height: 550px;
 
     border-top: 4px solid #FFD700;
 }
@@ -260,5 +261,12 @@ footer p {
 
     main {
         padding: 20px;
+    }
+
+    .cta {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center 20%;
+        min-height: 450px;
     }
 }
