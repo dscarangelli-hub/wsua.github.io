@@ -20,7 +20,7 @@
     <div class="watermark"></div>
     <div class="vignette"></div>
 
-    <!-- NAVIGATION BAR (ROOT VERSION) -->
+    <!-- NAVIGATION BAR -->
     <nav class="navbar fade-in">
         <div class="nav-left">
             <img src="assets/images/emblem.svg" alt="WSUA Emblem" class="nav-logo">
@@ -33,8 +33,6 @@
             <a href="about.html">About</a>
             <a href="donate.html" class="donate-btn">Donate</a>
             <a href="transparency.html">Transparency</a>
-
-            <!-- DESKTOP SEARCH ICON -->
             <span class="search-icon" onclick="toggleSearch()">🔍</span>
         </div>
     </nav>
@@ -46,7 +44,14 @@
     </div>
 
     <!-- HERO SECTION -->
-    <section class="hero fade-in-delayed">
+    <section class="hero fade-in-delayed" style="
+        background:
+            linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+            url('assets/images/hero-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    ">
         <div class="hero-text-wrapper">
             <h1 class="hero-title">Western Solidarity With Ukraine Alliance</h1>
             <p class="hero-subtitle">Rooted in unity. Growing in action.</p>
