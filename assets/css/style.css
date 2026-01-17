@@ -7,17 +7,28 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    color: #0b4f2f;
+    color: #ffffff;
     line-height: 1.6;
     background: #ffffff;
     overflow-x: hidden;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+}
+
+p {
+    color: #f2f2f2;
 }
 
 /* --------------------------------------------------
-   TRIPLE PARALLAX BACKGROUND LAYERS
+   TRIPLE PARALLAX BACKGROUND
 -------------------------------------------------- */
 
-/* Layer 1 — Deep Carpathian mountains */
 body::before {
     content: "";
     position: fixed;
@@ -32,7 +43,6 @@ body::before {
     background-attachment: fixed;
 }
 
-/* Layer 2 — Mid-depth atmospheric texture */
 body::after {
     content: "";
     position: fixed;
@@ -44,7 +54,7 @@ body::after {
     opacity: 0.7;
 }
 
-/* Layer 3 — Soft vignette around edges */
+/* Soft vignette */
 .vignette {
     content: "";
     position: fixed;
@@ -55,7 +65,7 @@ body::after {
 }
 
 /* --------------------------------------------------
-   FLOATING EMBLEM WATERMARK (BOTTOM-RIGHT)
+   FLOATING WATERMARK
 -------------------------------------------------- */
 
 .watermark {
@@ -69,7 +79,6 @@ body::after {
     background-repeat: no-repeat;
     opacity: 0.10;
     z-index: -1;
-    transform: translateZ(0);
     animation: watermarkFloat 18s ease-in-out infinite alternate;
 }
 
@@ -142,22 +151,84 @@ body::after {
     opacity: 0.8;
 }
 
-/* DONATE BUTTON WITH IMAGE BACKGROUND */
-.donate-btn {
-    padding: 8px 16px;
-    border-radius: 6px;
-    color: white;
-    font-weight: 700;
-    background: url('../images/blue-texture.jpg');
-    background-size: cover;
-    background-position: center;
-    border: 2px solid #FFD700;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+/* --------------------------------------------------
+   HYBRID SEARCH SYSTEM
+-------------------------------------------------- */
+
+/* Desktop search icon */
+.search-icon {
+    font-size: 1.3rem;
+    margin-left: 20px;
+    cursor: pointer;
+    user-select: none;
     transition: 0.2s ease;
 }
 
-.donate-btn:hover {
-    filter: brightness(1.15);
+.search-icon:hover {
+    opacity: 0.8;
+}
+
+/* Search container (desktop expands, mobile always visible) */
+.search-container {
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+    padding: 12px;
+    display: none;
+    position: relative;
+    backdrop-filter: blur(6px);
+}
+
+.search-container.active {
+    display: block;
+}
+
+#search-input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* Search results dropdown */
+.search-results {
+    position: absolute;
+    top: 58px;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.85);
+    border-radius: 6px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    z-index: 2000;
+}
+
+.search-results.active {
+    display: block;
+}
+
+.search-results a {
+    display: block;
+    padding: 12px 16px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.search-results a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Mobile: search bar always visible */
+@media (max-width: 700px) {
+    .search-container {
+        display: block;
+    }
+    .search-icon {
+        display: none;
+    }
 }
 
 /* --------------------------------------------------
@@ -183,16 +254,12 @@ body::after {
     font-weight: 700;
     margin-bottom: 20px;
     color: #FFD700;
-    text-shadow:
-        0 0 6px rgba(0,0,0,0.7),
-        0 0 12px rgba(0,0,0,0.5);
 }
 
 .hero-subtitle {
-    color: #0057B7;
+    color: #ffffff;
     font-size: 1.2rem;
     margin-bottom: 30px;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
 /* --------------------------------------------------
@@ -214,8 +281,12 @@ body::after {
 }
 
 /* --------------------------------------------------
-   IMAGE CARDS
+   CLICKABLE PROGRAM CARDS
 -------------------------------------------------- */
+
+.card-link {
+    text-decoration: none;
+}
 
 .card {
     position: relative;
@@ -256,7 +327,7 @@ body::after {
 }
 
 /* --------------------------------------------------
-   CTA SECTION WITH PARALLAX
+   CTA SECTION
 -------------------------------------------------- */
 
 .cta {
@@ -277,11 +348,6 @@ body::after {
     min-height: 550px;
 
     border-top: 4px solid #FFD700;
-}
-
-.cta h2 {
-    color: white;
-    font-size: 2rem;
 }
 
 /* --------------------------------------------------
