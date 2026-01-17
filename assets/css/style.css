@@ -1,11 +1,5 @@
-/* ------------------------------------------------------------
-   GLOBAL RESET
------------------------------------------------------------- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
     font-family: "Inter", Arial, sans-serif;
@@ -15,30 +9,11 @@ html, body {
     overflow-x: hidden;
 }
 
-/* ------------------------------------------------------------
-   GLOBAL ELEMENTS
------------------------------------------------------------- */
-h1, h2, h3 {
-    font-weight: 700;
-}
-
-p, li {
-    line-height: 1.6;
-    font-size: 1.05rem;
-}
-
-ul {
-    margin-left: 1.2rem;
-}
-
-/* ------------------------------------------------------------
-   WATERMARK + VIGNETTE
------------------------------------------------------------- */
+/* WATERMARK + VIGNETTE */
 .watermark {
     position: fixed;
     inset: 0;
-    background: url('../images/emblem.svg') center center no-repeat;
-    background-size: 40%;
+    background: url('../images/emblem.svg') center/40% no-repeat;
     opacity: 0.04;
     pointer-events: none;
     z-index: -3;
@@ -47,14 +22,12 @@ ul {
 .vignette {
     position: fixed;
     inset: 0;
+    background: radial-gradient(circle, rgba(0,0,0,0) 45%, rgba(0,0,0,0.35) 100%);
     pointer-events: none;
     z-index: -2;
-    background: radial-gradient(circle, rgba(0,0,0,0) 45%, rgba(0,0,0,0.35) 100%);
 }
 
-/* ------------------------------------------------------------
-   NAVBAR
------------------------------------------------------------- */
+/* NAVBAR */
 .navbar {
     width: 100%;
     padding: 1rem 2rem;
@@ -69,38 +42,13 @@ ul {
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-}
+.nav-left { display: flex; align-items: center; gap: 0.6rem; }
+.nav-logo { width: 40px; height: 40px; }
+.nav-title { font-size: 1.4rem; font-weight: 700; }
 
-.nav-logo {
-    width: 40px;
-    height: 40px;
-}
-
-.nav-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 1.4rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #222;
-    font-weight: 500;
-    transition: 0.2s;
-}
-
-.nav-links a:hover {
-    color: #005bbb;
-}
+.nav-links { display: flex; gap: 1.4rem; }
+.nav-links a { text-decoration: none; color: #222; font-weight: 500; }
+.nav-links a:hover { color: #005bbb; }
 
 .donate-btn {
     background: #005bbb;
@@ -109,93 +57,57 @@ ul {
     border-radius: 6px;
 }
 
-.search-icon {
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-
-/* ------------------------------------------------------------
-   HYBRID SEARCH BAR
------------------------------------------------------------- */
-.search-container {
-    width: 100%;
-    background: white;
-    padding: 0.8rem 2rem;
-    display: none;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-.search-container.active {
-    display: block;
-}
+/* SEARCH */
+.search-container { display: none; padding: 0.8rem 2rem; background: white; }
+.search-container.active { display: block; }
 
 #search-input {
     width: 100%;
     padding: 0.7rem 1rem;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 1rem;
 }
 
-.search-results {
-    margin-top: 0.6rem;
-    background: white;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    display: none;
-}
+.search-results { display: none; background: white; border: 1px solid #ddd; }
+.search-results.active { display: block; }
 
-.search-results.active {
-    display: block;
-}
-
-.search-results a {
-    display: block;
-    padding: 0.7rem 1rem;
-    text-decoration: none;
-    color: #222;
-    border-bottom: 1px solid #eee;
-}
-
-.search-results a:hover {
-    background: #f0f6ff;
-}
-
-.no-results {
-    padding: 0.7rem 1rem;
-    color: #666;
-}
-
-/* ------------------------------------------------------------
-   HERO SECTIONS
------------------------------------------------------------- */
+/* HERO — MULTI‑LAYER PARALLAX */
 .hero {
+    position: relative;
     height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    overflow: hidden;
     color: white;
-    padding: 2rem;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
+    margin-bottom: -120px;
+    padding-bottom: 160px;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('../images/hero-bg.jpg') center/cover no-repeat;
+    background-attachment: fixed;
+    z-index: -3;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: -2;
 }
 
 .hero-text-wrapper {
+    position: relative;
+    z-index: 5;
     max-width: 800px;
 }
 
-.hero-title {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.hero-subtitle {
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-}
+.hero-title { font-size: 3rem; margin-bottom: 1rem; }
+.hero-subtitle { font-size: 1.4rem; margin-bottom: 1.5rem; }
 
 .btn-primary {
     background: #ffd500;
@@ -204,46 +116,28 @@ ul {
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.2s;
 }
 
-.btn-primary:hover {
-    background: #ffcc00;
-}
-
-/* ------------------------------------------------------------
-   CONTENT SECTIONS
------------------------------------------------------------- */
+/* CONTENT */
 .content {
     max-width: 900px;
     margin: 3rem auto;
     padding: 0 1.5rem;
 }
 
-.content h2 {
-    margin-bottom: 1rem;
-}
-
-/* ------------------------------------------------------------
-   PROGRAM CARDS
------------------------------------------------------------- */
-.card-link {
-    text-decoration: none;
-}
-
+/* PROGRAM CARDS */
 .card {
     height: 260px;
     border-radius: 12px;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
+    background-size: cover;
+    background-position: center;
     margin: 1.5rem 0;
     padding: 1.5rem;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: 0.25s;
 }
 
 .card:hover {
@@ -251,74 +145,29 @@ ul {
     box-shadow: 0 12px 28px rgba(0,0,0,0.25);
 }
 
-.card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.4rem;
-}
-
-/* ------------------------------------------------------------
-   CTA SECTIONS
------------------------------------------------------------- */
+/* CTA */
 .cta {
     text-align: center;
     padding: 3rem 1.5rem;
-    background: #005bbb;
     color: white;
+    min-height: 55vh;
 }
 
-.cta h2 {
-    margin-bottom: 1rem;
-}
-
-.cta p {
-    margin-bottom: 1.5rem;
-}
-
-/* ------------------------------------------------------------
-   FOOTER
------------------------------------------------------------- */
+/* FOOTER */
 footer {
     text-align: center;
     padding: 2rem 1rem;
-    margin-top: 3rem;
     background: #f0f0f0;
-    color: #444;
+    margin-top: 3rem;
 }
 
-/* ------------------------------------------------------------
-   ANIMATIONS
------------------------------------------------------------- */
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-}
+/* ANIMATIONS */
+.fade-in { opacity: 0; animation: fadeIn 1s forwards; }
+@keyframes fadeIn { to { opacity: 1; } }
 
-.fade-in-delayed {
-    opacity: 0;
-    animation: fadeIn 1.4s forwards;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-/* ------------------------------------------------------------
-   RESPONSIVE DESIGN
------------------------------------------------------------- */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-
-    .nav-links {
-        gap: 1rem;
-    }
-
-    .card {
-        height: 220px;
-    }
+    .hero-title { font-size: 2.2rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .card { height: 220px; }
 }
