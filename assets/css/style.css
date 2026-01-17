@@ -7,16 +7,17 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #ffffff;
     color: #0b4f2f;
     line-height: 1.6;
+    background: #ffffff;
+    overflow-x: hidden;
 }
 
 /* --------------------------------------------------
-   DUAL PARALLAX BACKGROUND LAYERS
+   TRIPLE PARALLAX BACKGROUND LAYERS
 -------------------------------------------------- */
 
-/* Layer 1 — Deep Carpathian background */
+/* Layer 1 — Deep Carpathian mountains */
 body::before {
     content: "";
     position: fixed;
@@ -27,24 +28,58 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: -2;
+    z-index: -3;
     background-attachment: fixed;
 }
 
-/* Layer 2 — Mid‑depth translucent texture */
+/* Layer 2 — Mid-depth atmospheric texture */
 body::after {
     content: "";
     position: fixed;
     inset: 0;
     background:
         radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.25));
-    z-index: -1;
+    z-index: -2;
     background-attachment: fixed;
     opacity: 0.7;
 }
 
+/* Layer 3 — Soft vignette around edges */
+.vignette {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.45));
+    z-index: -1;
+}
+
 /* --------------------------------------------------
-   FADE‑IN ANIMATIONS
+   FLOATING EMBLEM WATERMARK (BOTTOM-RIGHT)
+-------------------------------------------------- */
+
+.watermark {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 180px;
+    height: 180px;
+    background: url('../images/emblem.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.10;
+    z-index: -1;
+    transform: translateZ(0);
+    animation: watermarkFloat 18s ease-in-out infinite alternate;
+}
+
+@keyframes watermarkFloat {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(-12px, -18px) scale(1.05); }
+}
+
+/* --------------------------------------------------
+   FADE-IN ANIMATIONS
 -------------------------------------------------- */
 
 .fade-in {
@@ -59,7 +94,7 @@ body::after {
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* --------------------------------------------------
@@ -237,7 +272,6 @@ body::after {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
-
     background-attachment: fixed;
 
     min-height: 550px;
@@ -286,5 +320,12 @@ footer p {
         background-size: cover;
         background-position: center 20%;
         min-height: 450px;
+    }
+
+    .watermark {
+        width: 120px;
+        height: 120px;
+        bottom: 20px;
+        right: 20px;
     }
 }
