@@ -12,23 +12,54 @@ body {
     line-height: 1.6;
 }
 
-main {
-    padding: 40px 20px;
+/* --------------------------------------------------
+   DUAL PARALLAX BACKGROUND LAYERS
+-------------------------------------------------- */
+
+/* Layer 1 — Deep Carpathian background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    background-attachment: fixed;
 }
 
-h1, h2, h3 {
-    font-weight: 700;
-    color: #0b4f2f;
-    margin-bottom: 16px;
+/* Layer 2 — Mid‑depth translucent texture */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.25));
+    z-index: -1;
+    background-attachment: fixed;
+    opacity: 0.7;
 }
 
-p {
-    margin-bottom: 16px;
+/* --------------------------------------------------
+   FADE‑IN ANIMATIONS
+-------------------------------------------------- */
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
 }
 
-ul {
-    padding-left: 20px;
-    margin-bottom: 20px;
+.fade-in-delayed {
+    opacity: 0;
+    animation: fadeIn 1.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* --------------------------------------------------
@@ -100,20 +131,15 @@ ul {
 
 .hero {
     text-align: center;
-    padding: 140px 20px;
-    background:
-        linear-gradient(to bottom right, rgba(0,87,183,0.20), rgba(11,79,47,0.20)),
-        url('../images/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    padding: 160px 20px 120px 20px;
+    background: transparent;
     border-bottom: 4px solid #FFD700;
 }
 
 .hero-text-wrapper {
     display: inline-block;
     padding: 20px 30px;
-    background: rgba(0,0,0,0.25);
+    background: rgba(0,0,0,0.35);
     border-radius: 10px;
 }
 
@@ -247,20 +273,12 @@ footer p {
 
 @media (max-width: 700px) {
 
-    .nav-links a {
-        margin-left: 14px;
-    }
-
     .hero {
-        padding: 100px 20px;
+        padding: 120px 20px;
     }
 
     .hero-title {
         font-size: 2.2rem;
-    }
-
-    main {
-        padding: 20px;
     }
 
     .cta {
