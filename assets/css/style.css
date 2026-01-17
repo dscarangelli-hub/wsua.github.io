@@ -40,7 +40,7 @@ ul {
     justify-content: space-between;
     align-items: center;
     padding: 14px 28px;
-    background: rgba(0, 87, 183, 0.95); /* Ukrainian blue */
+    background: rgba(0, 87, 183, 0.95);
     color: white;
     position: sticky;
     top: 0;
@@ -77,7 +77,7 @@ ul {
 }
 
 .donate-btn {
-    background: #FFD700; /* Ukrainian yellow */
+    background: #FFD700;
     padding: 8px 16px;
     border-radius: 6px;
     color: #003300;
@@ -89,14 +89,19 @@ ul {
 }
 
 /* --------------------------------------------------
-   HERO SECTION
+   HERO SECTION WITH IMAGE BACKGROUND
 -------------------------------------------------- */
 
 .hero {
     text-align: center;
-    padding: 120px 20px;
-    background: linear-gradient(to bottom right, #0057B7, #0b4f2f);
+    padding: 140px 20px;
     color: white;
+    background:
+        linear-gradient(to bottom right, rgba(0,87,183,0.75), rgba(11,79,47,0.75)),
+        url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-bottom: 4px solid #FFD700;
 }
 
@@ -191,7 +196,7 @@ footer p {
     }
 
     .hero {
-        padding: 80px 20px;
+        padding: 100px 20px;
     }
 
     .hero h1 {
