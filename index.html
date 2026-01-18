@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/svg+xml" href="assets/images/emblem.svg">
 
-    <!-- Search -->
     <script src="assets/js/fuse.min.js"></script>
     <script src="assets/js/search-index.js" defer></script>
     <script src="assets/js/search.js" defer></script>
@@ -16,11 +15,9 @@
 
 <body>
 
-    <!-- WATERMARK + VIGNETTE -->
     <div class="watermark"></div>
     <div class="vignette"></div>
 
-    <!-- NAVBAR -->
     <nav class="navbar fade-in">
         <div class="nav-left">
             <img src="assets/images/emblem.svg" class="nav-logo">
@@ -29,3 +26,87 @@
 
         <div class="nav-links">
             <a href="index.html">Home</a>
+            <a href="programs/programs.html">Programs</a>
+            <a href="about.html">About</a>
+            <a href="donate.html" class="donate-btn">Donate</a>
+            <a href="transparency.html">Transparency</a>
+            <span class="search-icon" onclick="toggleSearch()">🔍</span>
+        </div>
+    </nav>
+
+    <div id="search-container" class="search-container">
+        <input id="search-input" placeholder="Search WSUA..." oninput="runSearch()">
+        <div id="search-results" class="search-results"></div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-text-wrapper">
+            <h1 class="hero-title">Western Solidarity With Ukraine Alliance</h1>
+            <p class="hero-subtitle">Rooted in unity. Growing in action.</p>
+            <a href="donate.html" class="btn-primary">Donate Now</a>
+        </div>
+    </section>
+
+    <main>
+
+        <section class="content fade-in">
+            <h2>Our Mission</h2>
+            <p>
+                WSUA mobilizes communities across the Western United States to support Ukraine through transparent aid,
+                cultural solidarity, and sustained partnership.
+            </p>
+        </section>
+
+        <section class="content fade-in">
+            <h2>What We Do</h2>
+
+            <a href="programs/humanitarian.html" class="card-link">
+                <div class="card" style="background-image:url('assets/images/programs/humanitarian.jpg');">
+                    <h3>Humanitarian Aid</h3>
+                    <p>Emergency relief and essential supplies.</p>
+                </div>
+            </a>
+
+            <a href="programs/reconstruction.html" class="card-link">
+                <div class="card" style="background-image:url('assets/images/programs/reconstruction.jpg');">
+                    <h3>Reconstruction</h3>
+                    <p>Rebuilding homes, schools, and clinics.</p>
+                </div>
+            </a>
+
+            <a href="programs/resilience.html" class="card-link">
+                <div class="card" style="background-image:url('assets/images/programs/resilience.jpg');">
+                    <h3>Community Resilience</h3>
+                    <p>Micro‑grants and long‑term recovery.</p>
+                </div>
+            </a>
+
+            <a href="programs/diaspora.html" class="card-link">
+                <div class="card" style="background-image:url('assets/images/programs/diaspora.jpg');">
+                    <h3>Diaspora Support</h3>
+                    <p>Strengthening Ukrainian communities in the West.</p>
+                </div>
+            </a>
+        </section>
+
+        <section class="cta fade-in" style="
+            background:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                url('assets/images/cta-rally.jpg');
+            background-size: cover;
+            background-position: top center;
+            background-attachment: fixed;
+        ">
+            <h2>Stand With Ukraine</h2>
+            <p>Your support makes a real, measurable impact.</p>
+            <a href="donate.html" class="btn-primary">Donate Today</a>
+        </section>
+
+    </main>
+
+    <footer class="fade-in">
+        <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong>
