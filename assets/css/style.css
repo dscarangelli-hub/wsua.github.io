@@ -1,3 +1,4 @@
+
 /* ============================
    GLOBAL RESET & BASE STYLES
    ============================ */
@@ -6,6 +7,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  perspective: 1px;                 /* Enables parallax depth */
+  transform-style: preserve-3d;
+  overflow-x: hidden;
 }
 
 body {
@@ -44,162 +52,25 @@ a {
 }
 
 /* ============================
-   MODERN PARALLAX HERO
+   PARALLAX HERO
    ============================ */
 
 .hero {
   position: relative;
-  height: 80vh; /* Adjustable */
+  height: 80vh;                      /* Adjustable */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
   overflow: hidden;
+  transform-style: preserve-3d;      /* Required for parallax */
 }
 
-/* Parallax background using pseudo-element */
+/* Parallax background */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background: url('../images/hero-bg.jpg') center center / cover no-repeat;
-  transform: translateZ(-1px) scale(2); /* Creates depth */
-  z-index: -2;
-}
-
-/* Overlay */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: -1;
-}
-
-/* Text */
-.hero-text-wrapper {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  padding: 0 20px;
-}
-
-.hero-title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero-subtitle {
-  font-size: 1.4rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Button */
-.btn-primary {
-  background: #ffd500;
-  color: #222;
-  padding: 0.7rem 1.4rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.2s;
-}
-
-.btn-primary:hover {
-  background: #ffcc00;
-}
-
-/* ============================
-   CTA SECTIONS
-   ============================ */
-
-.cta-section {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: white;
-}
-
-.cta-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.cta-section p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
-/* ============================
-   PROGRAM CARDS
-   ============================ */
-
-.program-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 3rem 2rem;
-}
-
-.program-card {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: 0.2s;
-}
-
-.program-card:hover {
-  transform: translateY(-5px);
-}
-
-.program-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.program-card .content {
-  padding: 1.5rem;
-}
-
-.program-card h3 {
-  margin-bottom: 0.8rem;
-  font-size: 1.4rem;
-}
-
-.program-card p {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-/* ============================
-   FOOTER
-   ============================ */
-
-footer {
-  background: #003566;
-  color: white;
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: 3rem;
-}
-
-/* ============================
-   RESPONSIVE
-   ============================ */
-
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  .hero-subtitle {
-    font-size: 1.2rem;
-  }
-  .navbar {
-    flex-direction: column;
-    text-align: center;
-  }
-  .navbar a {
-    margin: 0.5rem 0;
-  }
-}
+  transform: translateZ(-1px) scale(2);  /* Creates
