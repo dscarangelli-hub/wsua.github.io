@@ -1,6 +1,6 @@
 /* ============================
-   GLOBAL RESET & BASE STYLES
-   ============================ */
+   GLOBAL BASE
+============================ */
 
 * {
   margin: 0;
@@ -8,18 +8,12 @@
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  perspective: 1px;                 /* Enables parallax depth */
-  transform-style: preserve-3d;
-  overflow-x: hidden;
-}
-
 body {
   font-family: Arial, sans-serif;
   background: #f7f7f7;
   color: #222;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a {
@@ -28,8 +22,28 @@ a {
 }
 
 /* ============================
+   WATERMARK + VIGNETTE
+============================ */
+
+.watermark {
+  position: fixed;
+  inset: 0;
+  background: url('../images/emblem.svg') center center / 40% no-repeat;
+  opacity: 0.05;
+  z-index: -3;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 60%, rgba(0,0,0,0.4));
+  z-index: -2;
+}
+
+/* ============================
    NAVBAR
-   ============================ */
+============================ */
 
 .navbar {
   width: 100%;
@@ -38,56 +52,105 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.navbar a {
   color: white;
-  font-weight: 600;
-  margin-left: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.navbar a:hover {
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.nav-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.nav-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.nav-links a {
+  margin-left: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+.nav-links a:hover {
   color: #ffd500;
 }
 
+.donate-btn {
+  background: #ffd500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  color: #222 !important;
+}
+
+.search-icon {
+  margin-left: 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
 /* ============================
-   PARALLAX HERO
-   ============================ */
+   SEARCH BAR
+============================ */
+
+.search-container {
+  display: none;
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 260px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 20;
+}
+
+.search-results {
+  margin-top: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* ============================
+   HERO SECTION
+============================ */
 
 .hero {
   position: relative;
-  height: 80vh;                      /* Adjustable */
+  height: 80vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
   color: white;
   overflow: hidden;
-  transform-style: preserve-3d;      /* Required for parallax */
 }
 
-/* Parallax background */
-.hero::before {
-  content: "";
+.hero-bg {
   position: absolute;
   inset: 0;
-  background: url('../images/hero-bg.jpg') center center / cover no-repeat;
-  transform: translateZ(-1px) scale(2);  /* Creates depth */
+  background-size: cover;
+  background-position: center;
   z-index: -2;
 }
 
-/* Overlay */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0,0,0,0.45);
   z-index: -1;
 }
 
-/* Text */
 .hero-text-wrapper {
-  position: relative;
-  z-index: 1;
   max-width: 800px;
   padding: 0 20px;
 }
@@ -102,13 +165,11 @@ a {
   margin-bottom: 1.5rem;
 }
 
-/* Button */
 .btn-primary {
   background: #ffd500;
   color: #222;
   padding: 0.7rem 1.4rem;
   border-radius: 6px;
-  text-decoration: none;
   font-weight: 600;
   transition: 0.2s;
 }
@@ -118,73 +179,69 @@ a {
 }
 
 /* ============================
-   CTA SECTIONS
-   ============================ */
+   CONTENT SECTIONS
+============================ */
 
-.cta-section {
-  padding: 4rem 2rem;
+.content {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: auto;
   text-align: center;
-  background: white;
 }
 
-.cta-section h2 {
+.content h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.cta-section p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+/* ============================
+   CARDS
+============================ */
+
+.card-link {
+  display: inline-block;
+  width: 100%;
+  max-width: 350px;
+  margin: 1rem;
+}
+
+.card {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
 }
 
 /* ============================
-   PROGRAM CARDS
-   ============================ */
+   CTA SECTION
+============================ */
 
-.program-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 3rem 2rem;
+.cta {
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  background-attachment: fixed;
 }
 
-.program-card {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  transform-style: preserve-3d;
-}
-
-.program-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.program-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.program-card .content {
-  padding: 1.5rem;
-}
-
-.program-card h3 {
-  margin-bottom: 0.8rem;
-  font-size: 1.4rem;
-}
-
-.program-card p {
-  font-size: 1rem;
+.cta h2 {
+  font-size: 2.2rem;
   margin-bottom: 1rem;
 }
 
 /* ============================
    FOOTER
-   ============================ */
+============================ */
 
 footer {
   background: #003566;
@@ -195,22 +252,24 @@ footer {
 }
 
 /* ============================
-   RESPONSIVE
-   ============================ */
+   ANIMATIONS
+============================ */
 
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  .hero-subtitle {
-    font-size: 1.2rem;
-  }
-  .navbar {
-    flex-direction: column;
-    text-align: center;
-  }
-  .navbar a {
-    margin: 0.5rem 0;
-  }
+.fade-in {
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
 }
 
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.2rem; }
+  .hero-subtitle { font-size: 1.2rem; }
+  .nav-links { display: none; }
+}
