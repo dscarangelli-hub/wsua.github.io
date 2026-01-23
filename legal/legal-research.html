@@ -9,29 +9,6 @@
     <link rel="stylesheet" href="/assets/css/legal.css">
     <link rel="stylesheet" href="/assets/css/components.css">
     <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg">
-
-    <script>
-        function toggleUpdate(btn) {
-            const full = btn.nextElementSibling;
-            const isOpen = full.style.display === "block";
-            full.style.display = isOpen ? "none" : "block";
-            btn.innerText = isOpen ? "Read More" : "Show Less";
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll('.pagination a').forEach(btn => {
-                btn.addEventListener('click', e => {
-                    e.preventDefault();
-                    document.querySelectorAll('.pagination a').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                });
-            });
-        });
-
-        function submitResearch() {
-            alert("Thank you! Your research submission has been received.");
-        }
-    </script>
 </head>
 
 <body>
@@ -187,5 +164,10 @@
     <p>© 2026 WSUA. All rights reserved.</p>
 </footer>
 
+<!-- SCRIPTS -->
+<script src="/assets/js/legal.js"></script>
+<script src="/assets/js/components.js"></script>
+
 </body>
 </html>
+
