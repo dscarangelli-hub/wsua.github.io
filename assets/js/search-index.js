@@ -1,4 +1,4 @@
-  const searchIndex = [
+const searchIndex = [
     {
         title: "Home",
         url: "/index.html",
@@ -38,6 +38,11 @@
         title: "Claims Guidance",
         url: "/legal/claims-guidance.html",
         content: "claims guidance restitution documentation property loss claims process Ukraine"
+    },
+    {
+        title: "Document Library",
+        url: "/legal/document-library.html",
+        content: "document library legal research reparations restitution transitional justice property rights claims guidance PDFs downloads"
     },
     {
         title: "WSUA Newsletter",
