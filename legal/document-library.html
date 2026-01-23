@@ -6,20 +6,28 @@
     <title>Document Library – WSUA</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/library.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
     <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg">
 
-    <style>
-        .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-        .doc-card { background:#fff; border-radius:8px; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.15); cursor:pointer; }
-        .doc-thumb { width:100%; height:160px; background-size:cover; background-position:center; border-radius:6px; }
-        .filter-bar { margin:1rem 0; display:flex; gap:1rem; flex-wrap:wrap; }
-        .filter-btn { padding:0.5rem 1rem; border-radius:6px; background:#eee; cursor:pointer; }
-        .filter-btn.active { background:#005bbb; color:white; }
-        #previewModal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; }
-        #previewFrame { width:80%; height:80%; border:none; background:white; }
-    </style>
-
     <script>
+        let currentPDF = "";
+
+        function previewPDF(url, title = "Document Preview") {
+            currentPDF = url;
+            document.getElementById("pdfTitle").innerText = title;
+            document.getElementById("previewFrame").src = url;
+            document.getElementById("previewModal").style.display = "flex";
+        }
+
+        function closePreview() {
+            document.getElementById("previewModal").style.display = "none";
+        }
+
+        function downloadPDF() {
+            window.open(currentPDF, "_blank");
+        }
+
         function filterDocs(category) {
             document.querySelectorAll('.doc-card').forEach(card => {
                 card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
@@ -28,14 +36,15 @@
             document.getElementById('filter-' + category).classList.add('active');
         }
 
-        function previewPDF(url) {
-            document.getElementById('previewFrame').src = url;
-            document.getElementById('previewModal').style.display = 'flex';
-        }
-
-        function closePreview() {
-            document.getElementById('previewModal').style.display = 'none';
-        }
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('.pagination a').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    e.preventDefault();
+                    document.querySelectorAll('.pagination a').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
     </script>
 </head>
 
@@ -91,14 +100,13 @@
     <h2>Documents</h2>
     <div class="doc-grid">
 
-        <!-- Example Document Card -->
-        <div class="doc-card" data-category="reparations" onclick="previewPDF('/assets/docs/reparations-brief.pdf')">
+        <div class="doc-card" data-category="reparations" onclick="previewPDF('/assets/docs/reparations-brief.pdf', 'Reparations Models: Comparative Brief')">
             <div class="doc-thumb" style="background-image:url('/assets/images/legal/thumb-reparations.jpg');"></div>
             <h3>Reparations Models: Comparative Brief</h3>
             <p>Category: Reparations</p>
         </div>
 
-        <div class="doc-card" data-category="claims" onclick="previewPDF('/assets/docs/documenting-losses.pdf')">
+        <div class="doc-card" data-category="claims" onclick="previewPDF('/assets/docs/documenting-losses.pdf', 'Documenting Losses Guide')">
             <div class="doc-thumb" style="background-image:url('/assets/images/legal/thumb-claims.jpg');"></div>
             <h3>Documenting Losses: A Practical Guide</h3>
             <p>Category: Claims Guidance</p>
@@ -106,11 +114,29 @@
 
     </div>
 
+    <div class="pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">→</a>
+    </div>
+
 </main>
 
-<!-- PDF PREVIEW MODAL -->
 <div id="previewModal" onclick="closePreview()">
-    <iframe id="previewFrame"></iframe>
+    <div id="previewContainer" onclick="event.stopPropagation()">
+
+        <div class="pdf-viewer-header">
+            <span id="pdfTitle">Document Preview</span>
+
+            <div class="pdf-viewer-controls">
+                <button onclick="downloadPDF()">Download</button>
+                <button onclick="closePreview()">Close</button>
+            </div>
+        </div>
+
+        <iframe id="previewFrame"></iframe>
+    </div>
 </div>
 
 <footer class="fade-in">
@@ -120,3 +146,4 @@
 
 </body>
 </html>
+
