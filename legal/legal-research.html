@@ -6,7 +6,32 @@
     <title>Legal Research Hub – WSUA</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/legal.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
     <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg">
+
+    <script>
+        function toggleUpdate(btn) {
+            const full = btn.nextElementSibling;
+            const isOpen = full.style.display === "block";
+            full.style.display = isOpen ? "none" : "block";
+            btn.innerText = isOpen ? "Read More" : "Show Less";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('.pagination a').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    e.preventDefault();
+                    document.querySelectorAll('.pagination a').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
+
+        function submitResearch() {
+            alert("Thank you! Your research submission has been received.");
+        }
+    </script>
 </head>
 
 <body>
@@ -14,7 +39,6 @@
 <div class="watermark"></div>
 <div class="vignette"></div>
 
-<!-- NAVBAR -->
 <nav class="navbar fade-in">
     <div class="nav-left">
         <img src="/assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
@@ -31,11 +55,9 @@
         <a href="/about.html">About</a>
         <a href="/donate.html">Donate</a>
         <a href="/transparency.html">Transparency</a>
-        <span class="search-icon" onclick="toggleSearch()">🔍</span>
     </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero small-hero fade-in">
     <div class="hero-bg" style="background-image:url('/assets/images/legal/legal-research-card.jpg');"></div>
     <div class="hero-overlay"></div>
@@ -48,16 +70,13 @@
 
 <main class="content fade-in">
 
-    <!-- INTRO -->
     <h2>About This Hub</h2>
     <p>
         The WSUA Legal Research Hub provides accessible, high‑quality research on the legal frameworks that will shape 
         Ukraine’s long‑term recovery. Our work focuses on reparations, restitution, transitional justice, property rights, 
-        and documentation standards for future claims processes. This hub serves as a foundation for community education, 
-        policy development, and international advocacy.
+        and documentation standards for future claims processes.
     </p>
 
-    <!-- LEGAL TOOLS SECTION -->
     <section class="content fade-in">
         <h2>Legal Tools</h2>
 
@@ -76,65 +95,90 @@
         </a>
     </section>
 
-    <!-- RESEARCH SECTIONS -->
     <h2>Research Areas</h2>
 
     <h3>Reparations</h3>
-    <p>
-        Reparations are essential to restoring justice and rebuilding trust after mass human rights violations. 
-        WSUA analyzes international precedents, including post‑conflict settlements, tribunal‑ordered compensation, 
-        and state‑funded restitution programs.
-    </p>
-
-    <ul style="max-width:800px; margin:1rem auto; text-align:left; line-height:1.8;">
+    <ul>
         <li><a href="/assets/docs/reparations-brief.pdf" target="_blank">Reparations Models: Comparative Brief</a></li>
         <li><a href="/assets/docs/reparations-history.pdf" target="_blank">Historical Reparations Mechanisms</a></li>
     </ul>
 
     <h3>Restitution</h3>
-    <p>
-        Restitution focuses on restoring property and rights lost due to conflict. Our research examines legal pathways 
-        for property return, compensation, and reconstruction support.
-    </p>
-
-    <ul style="max-width:800px; margin:1rem auto; text-align:left; line-height:1.8;">
+    <ul>
         <li><a href="/assets/docs/property-restitution.pdf" target="_blank">Property Restitution Pathways</a></li>
         <li><a href="/assets/docs/restitution-case-studies.pdf" target="_blank">Restitution Case Studies</a></li>
     </ul>
 
     <h3>Transitional Justice</h3>
-    <p>
-        Transitional justice mechanisms help societies address past abuses while building a stable future. 
-        WSUA studies truth commissions, hybrid tribunals, and community‑based justice models relevant to Ukraine.
-    </p>
-
-    <ul style="max-width:800px; margin:1rem auto; text-align:left; line-height:1.8;">
+    <ul>
         <li><a href="/assets/docs/transitional-justice-ukraine.pdf" target="_blank">Transitional Justice for Ukraine</a></li>
         <li><a href="/assets/docs/truth-commissions.pdf" target="_blank">Truth Commissions Overview</a></li>
     </ul>
 
     <h3>Property Rights</h3>
-    <p>
-        Property rights are central to Ukraine’s recovery. WSUA examines wartime destruction, displacement, 
-        and the legal frameworks needed to protect ownership and support reconstruction.
-    </p>
-
-    <ul style="max-width:800px; margin:1rem auto; text-align:left; line-height:1.8;">
+    <ul>
         <li><a href="/assets/docs/property-rights-wartime.pdf" target="_blank">Property Rights in Wartime</a></li>
         <li><a href="/assets/docs/housing-loss-categories.pdf" target="_blank">Housing Loss Categories</a></li>
     </ul>
 
-    <!-- VIDEO SECTION -->
-    <h2>Video Briefings</h2>
-    <div class="video-container">
-        <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID"
-            title="Legal Research Video Briefing"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-        </iframe>
+    <h2>Research Updates</h2>
+    <div class="updates-grid">
+
+        <div class="update-card">
+            <div class="update-thumb" style="background-image:url('/assets/images/legal/update1.jpg');"></div>
+            <h3>New Comparative Study on Reparations Models</h3>
+            <p class="update-date">January 2026</p>
+            <p class="update-excerpt">Our team completed a comparative analysis of post‑conflict reparations systems...</p>
+            <button class="update-toggle" onclick="toggleUpdate(this)">Read More</button>
+            <div class="update-full">
+                <p>
+                    The study identifies key lessons for Ukraine, including hybrid funding models, 
+                    community‑based restitution mechanisms, and the importance of early documentation.
+                </p>
+            </div>
+        </div>
+
+        <div class="update-card">
+            <div class="update-thumb" style="background-image:url('/assets/images/legal/update2.jpg');"></div>
+            <h3>Property Rights Mapping Initiative Launched</h3>
+            <p class="update-date">December 2025</p>
+            <p class="update-excerpt">WSUA has begun mapping property loss categories to support future restitution frameworks...</p>
+            <button class="update-toggle" onclick="toggleUpdate(this)">Read More</button>
+            <div class="update-full">
+                <p>
+                    This initiative will help displaced Ukrainians understand their rights and prepare 
+                    documentation for future claims processes.
+                </p>
+            </div>
+        </div>
+
     </div>
+
+    <div class="pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">→</a>
+    </div>
+
+    <section class="form-section fade-in">
+        <h3>Submit Research</h3>
+        <p>Share your insights, documents, or analysis with the WSUA legal research team.</p>
+
+        <label>Your Name</label>
+        <input type="text" id="srName">
+
+        <label>Email</label>
+        <input type="email" id="srEmail">
+
+        <label>Research Summary</label>
+        <textarea id="srSummary" rows="5"></textarea>
+
+        <label>Upload Document (optional)</label>
+        <input type="file" id="srFile">
+
+        <button onclick="submitResearch()">Submit</button>
+    </section>
 
 </main>
 
