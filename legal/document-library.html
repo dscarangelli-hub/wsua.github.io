@@ -9,43 +9,6 @@
     <link rel="stylesheet" href="/assets/css/library.css">
     <link rel="stylesheet" href="/assets/css/components.css">
     <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg">
-
-    <script>
-        let currentPDF = "";
-
-        function previewPDF(url, title = "Document Preview") {
-            currentPDF = url;
-            document.getElementById("pdfTitle").innerText = title;
-            document.getElementById("previewFrame").src = url;
-            document.getElementById("previewModal").style.display = "flex";
-        }
-
-        function closePreview() {
-            document.getElementById("previewModal").style.display = "none";
-        }
-
-        function downloadPDF() {
-            window.open(currentPDF, "_blank");
-        }
-
-        function filterDocs(category) {
-            document.querySelectorAll('.doc-card').forEach(card => {
-                card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
-            });
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('filter-' + category).classList.add('active');
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll('.pagination a').forEach(btn => {
-                btn.addEventListener('click', e => {
-                    e.preventDefault();
-                    document.querySelectorAll('.pagination a').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                });
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -144,6 +107,9 @@
     <p>© 2026 WSUA. All rights reserved.</p>
 </footer>
 
+<!-- SCRIPTS -->
+<script src="/assets/js/library.js"></script>
+<script src="/assets/js/components.js"></script>
+
 </body>
 </html>
-
