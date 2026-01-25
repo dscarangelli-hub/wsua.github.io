@@ -5,91 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Archive – WSUA</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/legal.css">
-    <link rel="stylesheet" href="/assets/css/components.css">
-    <link rel="icon" type="image/svg+xml" href="/assets/images/emblem.svg">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/legal.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/emblem.svg">
 </head>
 
 <body>
 
-<div class="watermark"></div>
-<div class="vignette"></div>
+    <div class="watermark"></div>
+    <div class="vignette"></div>
 
-<nav class="navbar fade-in">
-    <div class="nav-left">
-        <img src="/assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
-        <span class="nav-title">WSUA</span>
-    </div>
-
-    <div class="nav-links">
-        <a href="/index.html">Home</a>
-        <a href="/legal/legal-overview.html">Legal Overview</a>
-        <a href="/legal/legal-research.html">Legal Research</a>
-        <a href="/legal/claims-guidance.html">Claims Guidance</a>
-        <a href="/legal/document-library.html">Document Library</a>
-        <a href="/legal/research-archive.html" class="btn-primary">Research Archive</a>
-    </div>
-</nav>
-
-<section class="hero small-hero fade-in">
-    <div class="hero-bg" style="background-image:url('/assets/images/legal/update2.jpg');"></div>
-    <div class="hero-overlay"></div>
-
-    <div class="hero-text-wrapper">
-        <h1 class="hero-title">Research Archive</h1>
-        <p class="hero-subtitle">All WSUA legal research updates, reports, and publications.</p>
-    </div>
-</section>
-
-<main class="content fade-in">
-
-    <h2>All Research Updates</h2>
-
-    <div class="updates-grid">
-
-        <div class="update-card">
-            <div class="update-thumb" style="background-image:url('/assets/images/legal/update1.jpg');"></div>
-            <h3>New Comparative Study on Reparations Models</h3>
-            <p class="update-date">January 2026</p>
-            <p class="update-excerpt">A comparative analysis of post‑conflict reparations systems...</p>
-            <button class="update-toggle" onclick="toggleUpdate(this)">Read More</button>
-            <div class="update-full">
-                <p>Full text of the update goes here...</p>
-            </div>
+    <!-- NAVBAR -->
+    <nav class="navbar fade-in">
+        <div class="nav-left">
+            <img src="../assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
+            <span class="nav-title">WSUA</span>
         </div>
 
-        <div class="update-card">
-            <div class="update-thumb" style="background-image:url('/assets/images/legal/update2.jpg');"></div>
-            <h3>Property Rights Mapping Initiative Launched</h3>
-            <p class="update-date">December 2025</p>
-            <p class="update-excerpt">WSUA has begun mapping property loss categories...</p>
-            <button class="update-toggle" onclick="toggleUpdate(this)">Read More</button>
-            <div class="update-full">
-                <p>Full text of the update goes here...</p>
-            </div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="legal-overview.html">Legal Overview</a>
+            <a href="../programs/programs.html">Programs</a>
+            <a href="../newsletter.html">Newsletter</a>
+            <a href="../about.html">About</a>
+            <a href="../donate.html">Donate</a>
+            <a href="../transparency.html">Transparency</a>
         </div>
+    </nav>
 
-        <!-- Add more update cards as needed -->
+    <!-- HERO -->
+    <section class="hero small-hero fade-in">
+        <div class="hero-bg" style="background-image:url('../assets/images/legal/researcharchive.jpg');"></div>
+        <div class="hero-overlay"></div>
 
-    </div>
+        <div class="hero-text-wrapper">
+            <h1 class="hero-title">Research Archive</h1>
+            <p class="hero-subtitle">A chronological archive of WSUA’s legal research, updates, and publications.</p>
+        </div>
+    </section>
 
-    <div class="pagination">
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">→</a>
-    </div>
+    <main class="content fade-in">
 
-</main>
+        <!-- INTRO -->
+        <section class="content-section">
+            <h2>About the Archive</h2>
+            <p>
+                The WSUA Research Archive collects all legal research updates, publications, and analytical briefs 
+                produced by our team. This page serves as a historical record of our work on reparations, restitution, 
+                transitional justice, and property rights as Ukraine advances toward justice and recovery.
+            </p>
+        </section>
 
-<footer class="fade-in">
-    <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
-    <p>© 2026 WSUA. All rights reserved.</p>
-</footer>
+        <!-- FILTERS -->
+        <section class="content-section">
+            <h2>Filter by Topic</h2>
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="reparations">Reparations</button>
+                <button class="filter-btn" data-filter="restitution">Restitution</button>
+                <button class="filter-btn" data-filter="transitional">Transitional Justice</button>
+                <button class="filter-btn" data-filter="property">Property Rights</button>
+            </div>
+        </section>
 
-<script src="/assets/js/legal.js"></script>
-<script src="/assets/js/components.js"></script>
+        <!-- ARCHIVE GRID -->
+        <section class="content-section">
+            <h2>Research Updates</h2>
+
+            <div class="updates-grid" id="archiveGrid">
+
+                <!-- UPDATE 1 -->
+                <div class="update-card" data-category="reparations">
+                    <div class="update-thumb" style="background-image:url('../assets/images/legal/update1.jpg');"></div>
+                    <h3>Comparative Study on Reparations Models</h3>
+                    <p class="update-date">January 2026</p>
+                    <p class="update-excerpt">A comparative analysis of post‑conflict reparations systems...</p>
+                    <button class="update-toggle" onclick="toggleUpdate(this)">Read More</button>
+                    <div class="update-full">
+                        <p>
+                            This study identifies key lessons for Ukraine, including hybrid funding models, 
+                            community‑based restitution mechanisms, and the importance of early documentation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- UPDATE 2 -->
+                <div class="update-card" data-category="property">
+                    <div class="update-thumb" style="background-image:url('../assets/images/legal/update2.jpg');"></div>
+                    <h3>Property Rights Mapping Initiative Launched</h3>
+                    <p class="update-date">December 2025</p>
+                    <p class="update-excerpt">WSUA has begun mapping property loss categories...</p>
+                    <button class="update-toggle" onclick="toggleUpdate(this)">Read More</button>
+                    <div class="update-full">
+                        <p>
+                            This initiative will help displaced Ukrainians understand their rights and prepare 
+                            documentation for future claims processes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- UPDATE 3 -->
+                <div class="update-card" data-category="transitional">
+                    <div class="update-thumb" style="background-image:url('../assets/images/legal/update1.jpg');"></div>
+                    <h3>Truth‑Seeking Mechanisms for Post‑War Ukraine</h3>
+                    <p class="update-date">October 2025</p>
+                    <p class="update-excerpt">An overview of truth‑seeking models relevant to Ukraine...</p>
+                    <button class="update-toggle" onclick="toggleUpdate(this)">Read More</button>
+                    <div class="update-full">
+                        <p>
+                            This brief examines truth commissions, hybrid investigative bodies, and community‑based 
+                            truth‑seeking initiatives, highlighting their relevance for Ukraine’s transitional justice 
+                            landscape.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- UPDATE 4 -->
+                <div class="update-card" data-category="restitution">
+                    <div class="update-thumb" style="background-image:url('../assets/images/legal/update2.jpg');"></div>
+                    <h3>Restitution Pathways for Displaced Ukrainians</h3>
+                    <p class="update-date">August 2025</p>
+                    <p class="update-excerpt">A structured overview of restitution options...</p>
+                    <button class="update-toggle" onclick="toggleUpdate(this)">Read More</button>
+                    <div class="update-full">
+                        <p>
+                            This publication outlines legal pathways for restoring property rights, including 
+                            administrative restitution, judicial claims, and hybrid compensation mechanisms.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="fade-in">
+        <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
+        <p>© 2026 WSUA. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/legal.js"></script>
+    <script src="../assets/js/components.js"></script>
 
 </body>
 </html>
