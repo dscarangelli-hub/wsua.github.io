@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate – WSUA</title>
+
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/emblem.svg">
+
+    <!-- Donorbox embed script -->
+    <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
 </head>
 
 <body>
 
+    <div class="watermark"></div>
+    <div class="vignette"></div>
+
+    <!-- NAVBAR -->
     <nav class="navbar fade-in">
         <div class="nav-left">
             <img src="assets/images/emblem.svg" class="nav-logo" alt="WSUA Logo">
@@ -17,76 +27,91 @@
 
         <div class="nav-links">
             <a href="index.html">Home</a>
+            <a href="legal/legal-overview.html">Legal Overview</a>
             <a href="programs/programs.html">Programs</a>
+            <a href="newsletter.html">Newsletter</a>
             <a href="about.html">About</a>
             <a href="donate.html" class="btn-primary">Donate</a>
             <a href="transparency.html">Transparency</a>
-            <a href="/legal/document-library.html">Document Library</a>
         </div>
     </nav>
 
+    <!-- HERO -->
     <section class="hero small-hero fade-in">
-        <div class="hero-bg" style="background-image:url('assets/images/hero-donate.jpg');"></div>
+        <div class="hero-bg" style="background-image:url('assets/images/hero-bg.jpg');"></div>
         <div class="hero-overlay"></div>
 
         <div class="hero-text-wrapper">
-            <h1 class="hero-title">Support Ukraine Today</h1>
-            <p class="hero-subtitle">Your contribution strengthens resilience, relief, and recovery.</p>
+            <h1 class="hero-title">Support WSUA</h1>
+            <p class="hero-subtitle">Your contribution strengthens humanitarian aid, legal advocacy, and Ukraine’s path to justice.</p>
         </div>
     </section>
 
-    <main class="donate-container fade-in">
+    <main class="content fade-in">
 
-        <h2>Select Your Donation Tier</h2>
+        <!-- DONATION FORM -->
+        <section class="content-section">
+            <h2>Make a Donation</h2>
+            <p>Your support directly fuels our humanitarian missions, legal research, and community resilience programs.</p>
 
-        <div class="donation-tiers">
+            <iframe
+                src="https://donorbox.org/embed/aid-to-ukraine-904601"
+                name="donorbox"
+                allowpaymentrequest="allowpaymentrequest"
+                seamless="seamless"
+                frameborder="0"
+                scrolling="no"
+                height="900px"
+                width="100%"
+                style="max-width: 500px; min-width: 310px; margin: 0 auto; display: block;">
+            </iframe>
+        </section>
 
-            <label class="donation-tier">
-                <input type="radio" name="tier" value="1">
-                <div class="tier-content">
-                    <h3>Sunflower Supporter – $1</h3>
-                    <p>Digital certificate of solidarity.</p>
-                </div>
-            </label>
+        <!-- WAYS TO GIVE -->
+        <section class="content-section">
+            <h2>Other Ways to Give</h2>
 
-            <label class="donation-tier">
-                <input type="radio" name="tier" value="10">
-                <div class="tier-content">
-                    <h3>Blue & Yellow Ally – $10</h3>
-                    <p>Digital certificate of appreciation.</p>
-                </div>
-            </label>
+            <ul>
+                <li><strong>Bank Transfer (U.S.):</strong>  
+                    WSUA – Western Solidarity With Ukraine Alliance  
+                    Bank: Your U.S. Bank  
+                    Routing Number: XXXX  
+                    Account Number: XXXX  
+                </li>
 
-            <label class="donation-tier">
-                <input type="radio" name="tier" value="100">
-                <div class="tier-content">
-                    <h3>Tryzub Guardian – $100</h3>
-                    <p>Printed framed certificate mailed to you.</p>
-                </div>
-            </label>
+                <li><strong>Bank Transfer (EU/SEPA):</strong>  
+                    WSUA – Western Solidarity With Ukraine Alliance  
+                    IBAN: NLXX XXXX XXXX XXXX  
+                    BIC/SWIFT: XXXXXXX  
+                </li>
 
-            <label class="donation-tier">
-                <input type="radio" name="tier" value="250">
-                <div class="tier-content">
-                    <h3>Freedom Defender – $250+</h3>
-                    <p>Framed certificate + curated Ukrainian gift basket.</p>
-                </div>
-            </label>
+                <li><strong>Recurring Donations:</strong>  
+                    You can set up monthly giving directly through the Donorbox form above.</li>
 
-        </div>
+                <li><strong>Employer Matching:</strong>  
+                    Many employers match donations. Check with your HR department.</li>
+            </ul>
+        </section>
 
-        <h2>Complete Your Donation</h2>
+        <!-- WHERE YOUR DONATION GOES -->
+        <section class="content-section">
+            <h2>Where Your Donation Goes</h2>
 
-        <div class="payment-buttons">
-            <button class="apple-pay-btn">Donate with Apple Pay</button>
-            <button class="google-pay-btn">Donate with Google Pay</button>
-        </div>
+            <ul>
+                <li><strong>Humanitarian Aid:</strong> Medical supplies, emergency relief, and direct support for displaced families.</li>
+                <li><strong>Legal Research:</strong> Documentation, restitution frameworks, and transitional justice analysis.</li>
+                <li><strong>Community Resilience:</strong> Micro‑grants, legal navigation assistance, and long‑term recovery programs.</li>
+                <li><strong>Operational Transparency:</strong> WSUA maintains strict financial accountability and publishes regular reports.</li>
+            </ul>
+
+            <p>For full financial transparency, visit our <a href="transparency.html">Transparency Page</a>.</p>
+        </section>
 
     </main>
 
     <footer class="fade-in">
         <p><strong>WSUA – Western Solidarity With Ukraine Alliance</strong></p>
-        <p>© 2024 WSUA. All rights reserved.</p>
+        <p>© 2026 WSUA. All rights reserved.</p>
     </footer>
 
 </body>
