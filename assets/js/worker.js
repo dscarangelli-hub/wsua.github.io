@@ -1,48 +1,57 @@
-export default {
-  async fetch(request, env) {
-    const DONORBOX_API_KEY = env.DONORBOX_API_KEY;
+// Initialize Stripe with your publishable key
+const stripe = Stripe("pk_live_YOUR_KEY_HERE");
 
-    const response = await fetch("https://donorbox.org/api/v1/donations", {
-      headers: {
-        "Authorization": `Bearer ${DONORBOX_API_KEY}`,
-        "Content-Type": "application/json"
-      }
-    });
+// Your Cloudflare Worker base URL
+const WORKER_BASE = "https://wsua-2.dominicscar-law.workers.dev";
 
-    if (!response.ok) {
-      return new Response(JSON.stringify({ error: "Failed to fetch Donorbox data" }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" }
+// -------------------------------
+// One-time “coffee” donation
+// -------------------------------
+const donateOnceBtn = document.getElementById("donate-once");
+
+if (donateOnceBtn) {
+  donateOnceBtn.addEventListener("click", async () => {
+    try {
+      const res = await fetch(`${WORKER_BASE}/create-checkout`, {
+        method: "POST"
       });
-    }
 
-    const data = await response.json();
-
-    // Extract relevant info
-    let totalRaised = 0;
-    let donors = [];
-
-    for (const donation of data.donations) {
-      const amount = donation.amount;
-      const name = donation.donor?.name || "Anonymous";
-
-      totalRaised += amount;
-
-      // Only show donors who gave $30+
-      if (amount >= 30) {
-        donors.push({
-          name,
-          amount
-        });
+      if (!res.ok) {
+        alert("Unable to start donation. Please try again.");
+        return;
       }
+
+      const data = await res.json();
+      await stripe.redirectToCheckout({ sessionId: data.id });
+
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again.");
+    }
+  });
+}
+
+// -------------------------------
+// Tiered donations ($30, $60, $120)
+// -------------------------------
+async function startTier(amount) {
+  try {
+    const res = await fetch(`${WORKER_BASE}/create-checkout`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount })
+    });
+
+    if (!res.ok) {
+      alert("Unable to start donation. Please try again.");
+      return;
     }
 
-    return new Response(JSON.stringify({
-      goal: 100000,
-      raised: totalRaised,
-      donors
-    }), {
-      headers: { "Content-Type": "application/json" }
-    });
+    const data = await res.json();
+    await stripe.redirectToCheckout({ sessionId: data.id });
+
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again.");
   }
-};
+}
