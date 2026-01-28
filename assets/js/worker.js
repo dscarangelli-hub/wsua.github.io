@@ -1,5 +1,5 @@
 // Initialize Stripe with your publishable key
-const stripe = Stripe("pk_live_YOUR_KEY_HERE");
+const stripe = Stripe(pk_live_51StmiA03qJU1YgeOBQ9Bf6QT2BN4hu944B4ky40zHl66hdEyZerXgHjXZLeepOtVbCRr5sd6PGYJZ8ifgZdGhNRL00coeoP4Jg);
 
 // Your Cloudflare Worker base URL
 const WORKER_BASE = "https://wsua-2.dominicscar-law.workers.dev";
